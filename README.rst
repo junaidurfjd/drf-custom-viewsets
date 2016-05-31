@@ -19,13 +19,24 @@ Quickstart
 ----------
 
 Install Rest Framework Custom ViewSets::
-
     pip install rest_framework_custom_viewsets
+Add it to the INSTALLED_APPS setting::
+    INSTALLED_APPS += ('drf_custom_viewsets')
 
-Then use it in a project::
+Example::
+    from drf_custom_viewsets.viewsets.CustomSerializerViewSet
+    from myapp.serializers import CustomSerializer1, CustomSerializer2
+
+    class MyViewSet(CustomSerializerViewSet):
+        custom_serializer_class = {
+            'GET':  CustomSerializer1,
+            'POST': CustomSerializer2,
+        }
+
+
+Then import it in a project::
 
     import drf_custom_viewsets
-
 Features
 --------
 
