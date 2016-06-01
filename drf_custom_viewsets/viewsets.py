@@ -21,10 +21,16 @@ class CustomSerializerViewSet(ModelViewSet):
 
         """ Return the class to use for serializer w.r.t to the request method."""
 
-        if self.custom_serializer_classes is None:
-            return super.get_serializer_class()
-        else:
-            if self.request.method in self.custom_serializer_classes:
-                return self.custom_serializer_classes[self.request.method]
-            else:
-                return super.get_serializer_class()
+        # if self.custom_serializer_classes is None:
+        #     return super.get_serializer_class()
+        # else:
+        #     if self.request.method in self.custom_serializer_classes:
+        #         return self.custom_serializer_classes[self.request.method]
+        #     else:
+        #         return super.get_serializer_class()
+
+        try:
+            return self.custom_serializer_classes[self.action]
+        except (KeyError, AttributeError):
+            return super(CustomSerializerViewSet, self).get_serializer_class()
+
