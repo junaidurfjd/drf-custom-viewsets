@@ -25,6 +25,6 @@ class CustomSerializerViewSet(ModelViewSet):
             return super.get_serializer_class()
         else:
             if self.request.method in self.custom_serializer_classes:
-                return self.custom_serializer_classes[self.request.mothod]
+                return self.custom_serializer_classes[self.request.method]
             else:
                 return super.get_serializer_class()
