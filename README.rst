@@ -8,12 +8,11 @@ Rest Framework Custom ViewSets
 .. image:: https://travis-ci.org/Darwesh27/rest_framework_custom_viewsets.png?branch=master
     :target: https://travis-ci.org/Darwesh27/rest_framework_custom_viewsets
 
-Django ModelViewSet extended for per view base extensions like Serializer Classes etc.
-
-Documentation
+A very small library for extending the functionality of DRF ModelViewSet.
+Viewsets
 -------------
 
-The full documentation is at https://rest_framework_custom_viewsets.readthedocs.org.
+The first of out custom viewsets is the CustomSerializerViewSet that allows you to specify different serializers for different actions of a viewset.
 
 Quickstart
 ----------
