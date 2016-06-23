@@ -5,7 +5,7 @@ Rest Framework Custom ViewSets
 .. image:: https://badge.fury.io/py/rest_framework_custom_viewsets.png
     :target: https://badge.fury.io/py/rest_framework_custom_viewsets
 
-.. image:: https://travis-ci.org/Darwesh27/rest_framework_custom_viewsets.png?branch=master
+.. image:: https://travis-ci.org/Darwesh27/drf-custom-viewsets.svg?branch=master
     :target: https://travis-ci.org/Darwesh27/rest_framework_custom_viewsets
 
 A very small library for extending the functionality of DRF ModelViewSet.
