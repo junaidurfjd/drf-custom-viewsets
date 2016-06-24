@@ -9,8 +9,9 @@ Rest Framework Custom ViewSets
     :target: https://travis-ci.org/Darwesh27/rest_framework_custom_viewsets
 
 A very small library for extending the functionality of DRF ModelViewSet.
+
 Viewsets
--------------
+--------
 
 The first of out custom viewsets is the CustomSerializerViewSet that allows you to specify different serializers for different actions of a viewset.
 
@@ -55,6 +56,12 @@ Does the code actually work?
 
 Credits
 ---------
+
+Inspired from
+
+*  [user2734679 answer on SO](http://stackoverflow.com/a/22922156/1531173 "abc" )
+*  [jonz answer on SO](http://stackoverflow.com/a/22755648/1531173 "abc" )
+
 
 Tools used in rendering this package:
 
