@@ -10,6 +10,8 @@ Tests for `rest_framework_custom_viewsets` models module.
 
 # Adding a comment for the sake of a push
 
+from django.db import models
+
 from test_plus.test import TestCase
 
 from drf_custom_viewsets import viewsets
@@ -17,6 +19,8 @@ from drf_custom_viewsets import viewsets
 from rest_framework.test import APIRequestFactory
 
 from rest_framework import status
+
+from rest_framework.response import Response
 
 factory = APIRequestFactory()
 
@@ -39,17 +43,15 @@ class SerCreate(object):
     }
 
 
-class MyQuerySet(object):
-    pass
-
-
 class MyViewSet(viewsets.CustomSerializerViewSet):
     serializer_class = SerCreate
     queryset = []
     custom_serializer_classes = {
         'list': SerList,
-        'create': SerCreate,
     }
+
+    def create(self, request, *args, **kwargs):
+        return Response(SerCreate().data, status=status.HTTP_201_CREATED)
 
 
 class TestCustomSerializerViewSet(TestCase):
@@ -66,6 +68,16 @@ class TestCustomSerializerViewSet(TestCase):
         response = my_view(request)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['key'], "List Serializer")
+
+    def test_no_match_returns_default_serializer(self):
+        request = factory.post('/fakeurl')
+        my_view = MyViewSet.as_view(actions={
+            'post': 'create',
+        })
+
+        response = my_view(request)
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(response.data['key'], "Create Serializer")
 
     def tearDown(self):
         pass
