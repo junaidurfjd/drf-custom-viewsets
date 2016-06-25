@@ -17,3 +17,4 @@ script: coverage run --source drf_custom_viewsets runtests.py
 
 after_success:
   - codecov
+  - bash <(curl -s https://codecov.io/bash)
