@@ -44,10 +44,10 @@ class SerCreate(object):
 
 
 class MyViewSet(viewsets.CustomSerializerViewSet):
-    serializer_class = SerCreate
+    serializer_class = SerList
     queryset = []
     custom_serializer_classes = {
-        'list': SerList,
+        'create': SerCreate,
     }
 
     def create(self, request, *args, **kwargs):
@@ -59,7 +59,7 @@ class TestCustomSerializerViewSet(TestCase):
     def setUp(self):
         pass
 
-    def test_update_action_has_update_serializer(self):
+    def test_no_match_returns_default_serializer(self):
         request = factory.get('/fakeurl')
         my_view = MyViewSet.as_view(actions={
             'get': 'list',
@@ -69,8 +69,8 @@ class TestCustomSerializerViewSet(TestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['key'], "List Serializer")
 
-    def test_no_match_returns_default_serializer(self):
-        request = factory.post('/fakeurl')
+    def test_update_action_has_update_serializer(self):
+        request = factory.post('/')
         my_view = MyViewSet.as_view(actions={
             'post': 'create',
         })
