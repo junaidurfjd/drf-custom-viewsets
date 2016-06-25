@@ -7,6 +7,9 @@ Rest Framework Custom ViewSets
 
 .. image:: https://travis-ci.org/Darwesh27/drf-custom-viewsets.svg?branch=master
     :target: https://travis-ci.org/Darwesh27/rest_framework_custom_viewsets
+    
+.. image:: https://codecov.io/gh/Darwesh27/drf-custom-viewsets/branch/master/graph/badge.svg
+  :target: https://codecov.io/gh/Darwesh27/drf-custom-viewsets
 
 A very small library for extending the functionality of DRF ModelViewSet.
 
